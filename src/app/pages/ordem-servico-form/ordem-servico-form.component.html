@@ -1,0 +1,78 @@
+<div class="form-wrapper">
+  <div class="p-card p-shadow-4 p-p-4">
+    <h2 class="p-mb-4">Cadastro de Ordem de Serviço</h2>
+
+    <form [formGroup]="ordemForm" (ngSubmit)="salvar()" class="p-fluid p-formgrid p-grid">
+
+      <div class="p-field p-col-12 p-md-6">
+        <label for="status">Status</label>
+        <p-dropdown
+          [options]="statusOptions"
+          formControlName="status"
+          placeholder="Selecione o status">
+        </p-dropdown>
+      </div>
+
+      <div class="p-field p-col-12 p-md-6">
+        <label for="cpf">Buscar Cliente por CPF</label>
+        <div class="p-inputgroup">
+          <input
+            type="text"
+            pInputText
+            [(ngModel)]="cpfBusca"
+            [ngModelOptions]="{ standalone: true }"
+            name="cpfBusca"
+            placeholder="Digite o CPF"
+          />
+          <button
+            pButton
+            type="button"
+            icon="pi pi-search"
+            (click)="buscarClientePorCpf()"
+          ></button>
+        </div>
+      </div>
+
+      <div class="p-field p-col-12 p-md-6" *ngIf="clienteSelecionado">
+        <label>Nome do Cliente</label>
+        <input type="text" pInputText [value]="clienteSelecionado.nome" readonly />
+      </div>
+
+      <div class="p-field p-col-12 p-md-6" formGroupName="cliente" *ngIf="clienteSelecionado">
+        <input type="hidden" formControlName="id" />
+      </div>
+
+      <div class="p-field p-col-12 p-md-6" formGroupName="veiculo" *ngIf="veiculosCliente?.length">
+        <label for="veiculo">Veículo</label>
+        <p-dropdown
+          [options]="veiculosCliente"
+          optionLabel="placa"
+          optionValue="id"
+          formControlName="id"
+          placeholder="Selecione o veículo">
+        </p-dropdown>
+      </div>
+
+      <div class="p-col-12 p-d-flex p-jc-end p-mt-3">
+        <button
+          pButton
+          type="submit"
+          label="Salvar"
+          class="p-button-success p-mr-2"
+          [disabled]="ordemForm.invalid"
+        ></button>
+
+        <button
+          pButton
+          type="button"
+          label="Voltar"
+          class="p-button-secondary"
+          routerLink="/ordens"
+        ></button>
+      </div>
+
+    </form>
+  </div>
+</div>
+
+

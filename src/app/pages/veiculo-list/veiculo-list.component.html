@@ -1,0 +1,46 @@
+<h2>Veículos</h2>
+
+<button 
+  pButton 
+  type="button" 
+  label="Novo Veículo" 
+  icon="pi pi-plus" 
+  class="p-button-success mb-3" 
+  (click)="novoVeiculo()">
+</button>
+
+<p-table [value]="veiculos" [paginator]="true" [rows]="5" responsiveLayout="scroll">
+  <ng-template pTemplate="header">
+    <tr>
+      <th>Modelo</th>
+      <th>Placa</th>
+      <th>Ano</th>
+      <th>Ações</th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-veiculo>
+    <tr>
+      <td>{{ veiculo.modelo }}</td>
+      <td>{{ veiculo.placa }}</td>
+      <td>{{ veiculo.ano }}</td>
+      <td>
+        <button 
+          pButton 
+          type="button" 
+          icon="pi pi-pencil" 
+          label="Editar" 
+          class="p-button-sm p-button-warning mr-2"
+          (click)="editarVeiculo(veiculo.id)">
+        </button>
+        <button 
+          pButton 
+          type="button" 
+          icon="pi pi-trash" 
+          label="Excluir" 
+          class="p-button-sm p-button-danger"
+          (click)="excluirVeiculo(veiculo.id)">
+        </button>
+      </td>
+    </tr>
+  </ng-template>
+</p-table>

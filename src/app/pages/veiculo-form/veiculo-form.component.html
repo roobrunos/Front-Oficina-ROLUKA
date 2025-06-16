@@ -1,0 +1,31 @@
+<h2>{{ veiculoId ? 'Editar Veículo' : 'Novo Veículo' }}</h2>
+
+<form [formGroup]="veiculoForm" (ngSubmit)="salvar()">
+  <div class="p-fluid">
+
+    <div class="p-field mb-3">
+      <label for="modelo">Modelo</label>
+      <input id="modelo" pInputText formControlName="modelo" />
+    </div>
+
+    <div class="p-field mb-3">
+      <label for="placa">Placa</label>
+      <input id="placa" pInputText formControlName="placa" />
+    </div>
+
+    <div class="p-field mb-3">
+      <label for="ano">Ano</label>
+      <input id="ano" type="number" pInputText formControlName="ano" />
+    </div>
+
+    <button 
+      pButton 
+      type="submit" 
+      label="Salvar" 
+      icon="pi pi-check" 
+      [disabled]="veiculoForm.invalid"
+      class="p-button-success mt-2">
+    </button>
+
+  </div>
+</form>

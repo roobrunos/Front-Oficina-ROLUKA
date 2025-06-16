@@ -1,0 +1,52 @@
+<h2>Ordens de Serviço</h2>
+
+<button 
+  pButton 
+  type="button" 
+  label="Nova Ordem de Serviço" 
+  icon="pi pi-plus" 
+  class="p-button-success mb-3" 
+  (click)="novaOrdem()">
+</button>
+
+<p-table [value]="ordens" [paginator]="true" [rows]="5" responsiveLayout="scroll">
+  <ng-template pTemplate="header">
+    <tr>
+      <th>Código</th>
+      <th>Status</th>
+      <th>Cliente</th>
+      <th>Veículo</th>
+      <th>Ações</th>
+    </tr>
+  </ng-template>
+
+  <ng-template pTemplate="body" let-ordem>
+    <tr>
+      <td>{{ ordem.codigo }}</td>
+      <td>{{ ordem.status }}</td>
+      <td>{{ ordem.cliente }}</td>
+      <td>{{ ordem.veiculo }}</td>
+      <td>
+        <button 
+          pButton 
+          type="button" 
+          icon="pi pi-pencil" 
+          label="Editar"
+          class="p-button-sm p-button-warning mr-2"
+          (click)="editarOrdem(ordem.id)">
+        </button>
+
+        <button 
+          pButton 
+          type="button" 
+          icon="pi pi-trash" 
+          label="Excluir"
+          class="p-button-sm p-button-danger"
+          (click)="excluirOrdem(ordem.id)">
+        </button>
+      </td>
+    </tr>
+  </ng-template>
+</p-table>
+
+  

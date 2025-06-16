@@ -1,0 +1,55 @@
+<h2>{{ clienteId ? 'Editar Cliente' : 'Novo Cliente' }}</h2>
+
+<form [formGroup]="clienteForm" (ngSubmit)="salvar()">
+  <div class="p-fluid">
+
+    <div class="p-field">
+      <label for="nome">Nome</label>
+      <input id="nome" type="text" pInputText formControlName="nome" />
+    </div>
+
+    <div class="p-field">
+      <label for="tipoPessoa">Tipo de Pessoa</label>
+      <p-dropdown 
+        [options]="tiposPessoa" 
+        formControlName="tipoPessoa" 
+        placeholder="Selecione o tipo"
+        (onChange)="aoSelecionarTipoPessoa()"
+      ></p-dropdown>
+    </div>
+
+    <div class="p-field" *ngIf="tipoSelecionado === 'FISICA'">
+      <label for="cpf">CPF</label>
+      <input id="cpf" type="text" pInputText formControlName="documento" mask="000.000.000-00" /> // validação de formato de cpf 
+    </div>
+
+    <div class="p-field" *ngIf="tipoSelecionado === 'JURIDICA'">
+      <label for="cnpj">CNPJ</label>
+      <input id="cnpj" type="text" pInputText formControlName="documento" mask="00.000.000/0000-00" /> // validação para o cpnj
+    </div>
+
+    <div class="p-field">
+      <label for="telefone">Telefone</label>
+      <input id="telefone" type="text" pInputText formControlName="telefone" />
+    </div>
+
+    <button 
+      pButton 
+      type="submit" 
+      label="Salvar" 
+      class="p-button-success mt-2" 
+      [disabled]="clienteForm.invalid"
+    ></button>
+
+    <button 
+      pButton 
+      type="button" 
+      label="Voltar" 
+      class="p-button-secondary mt-2 ml-2" 
+      routerLink="/cliente-list"
+    ></button>
+
+  </div>
+</form>
+
+

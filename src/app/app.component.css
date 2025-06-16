@@ -1,0 +1,32 @@
+/* Espaçamento entre o título e os itens */
+.app-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-right: 2rem; /* espaço após o título */
+    color: #ffffff;
+  }
+  
+  /* Espaçamento entre os itens do menu */
+  .custom-menubar .p-menubar-root-list > .p-menuitem {
+    margin-right: 2rem; /* espaço horizontal entre menu principal */
+
+  }
+  
+  /* Melhor espaçamento vertical nos subitens */
+  .p-menuitem-link {
+    padding: 0.75rem 1.25rem !important;
+    line-height: 1.5rem;
+  }
+  
+  /* Fixar cores se quiser mais contraste */
+  .custom-menubar {
+    background-color: #1976d2; /* azul mais clean */
+    border: none;
+    border-radius: 0;
+  }
+  .custom-menubar .p-menuitem-text {
+    font-size: 1.1rem;
+    font-weight: 500;
+  }
+  
+  
